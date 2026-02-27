@@ -1,14 +1,3 @@
-Perfect 🔥 Ranjit — below is your **updated professional README.md** including:
-
-* ✅ Flow Diagram (PlantUML)
-* ✅ Architecture Diagram (PlantUML code)
-* ✅ Architecture Diagram as Image option
-* ✅ Clean GitHub-ready formatting
-
-You can copy this directly into `README.md`.
-
----
-
 # 🤖 Autonomous Social Media Agent
 
 An AI-powered automation system that discovers viral topics, generates content (text, image, video), publishes posts to Facebook, shares to groups, and optimizes engagement automatically.
