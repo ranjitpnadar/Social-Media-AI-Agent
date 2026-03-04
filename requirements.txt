@@ -1,0 +1,13 @@
+langgraph          # Manages the Agent-to-Agent state and workflow
+langchain-openai   # The LLM engine driving the agents
+langchain_mcp_adapters  # Adapters for integrating MCP servers with LangChain
+pydantic           # For strict data validation and typing
+python-dotenv      # Manages environment variables securely
+apscheduler        # Handles the cron-like "5 times daily" scheduling
+pytrends           # Python wrapper for Google Trends API
+fastmcp            # Fast implementation of MCP for high performance
+feedparser         # Parses RSS feeds for trend monitoring
+requests           # For making HTTP requests to APIs and web scraping
+elevenlabs         # ElevenLabs API client for text-to-speech conversion
+langchain-google-genai  # Google Gemini API integration for advanced LLM capabilities
+edge-tts          # For text-to-speech conversion using Microsoft Edge voices (optional alternative to ElevenLabs)
