@@ -6,4 +6,5 @@ class AgentState(TypedDict):
     creative_prompt: Optional[str]
     story_text: Optional[str]
     audio_file_path: Optional[str]
+    facebook_post_id: Optional[str] 
     error: Optional[str]
