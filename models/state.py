@@ -1,4 +1,4 @@
-from typing import TypedDict, Optional
+from typing import TypedDict, Optional, Any
 
 class AgentState(TypedDict):
     topic: Optional[str]
@@ -6,5 +6,7 @@ class AgentState(TypedDict):
     creative_prompt: Optional[str]
     story_text: Optional[str]
     audio_file_path: Optional[str]
+    image_details: Any
+    video_details: Any
     facebook_post_id: Optional[str] 
     error: Optional[str]

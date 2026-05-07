@@ -3,6 +3,7 @@ from langchain_google_genai import ChatGoogleGenerativeAI
 from langchain_core.prompts import ChatPromptTemplate
 from models.state import AgentState
 from services.topic_service import fetch_daily_trends
+from services.llm_client import chat_completion  
 
 from dotenv import load_dotenv
 load_dotenv()  # Load environment variables from .env file
@@ -34,19 +35,29 @@ def topic_assistant_node(state: AgentState) -> dict:
     }}
     """
     
-    prompt_template = ChatPromptTemplate.from_messages([
-        ("system", system_prompt),
-        ("human", "Today's Trends: {trends}")
-    ])
+    # prompt_template = ChatPromptTemplate.from_messages([
+    #     ("system", system_prompt),
+    #     ("human", "Today's Trends: {trends}")
+    # ])
+    messages = [
+        {"role": "system", "content": system_prompt},
+        {"role": "user", "content": f"Today's Trends: {trends}"},
+    ]
     
-    response = (prompt_template | llm).invoke({"trends": trends})
+    # response = (prompt_template | llm).invoke({"trends": trends})
     
     # Parse the JSON response
     try:
-        result = json.loads(response.content.strip('` \n'))
+        raw = chat_completion(messages, temperature=0.7)
+        result = json.loads(raw.strip('` \n'))
+        # result = json.loads(response.content.strip('` \n'))
         print(f"Assistant Selected Topic: {result['topic']}")
         print(f"Assistant Selected Voice: {result['voice_name']}")
+        # state["topic"] = result["topic"]
+        # state["voice_name"] = result["voice_name"]
+        print("--- 🤖 TOPIC ASSISTANT State ---", state)
         return {"topic": result["topic"], "voice_name": result["voice_name"]}
+    
     except Exception as e:
         # Fallback in case the LLM messes up the JSON formatting
         return {"topic": "A dark mystery horror story.", "voice_name": "Adam"}
